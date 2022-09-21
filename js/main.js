@@ -78,6 +78,8 @@ function updateDisplay() {
 
 };
 
+// Need to move incrementer?
+
 updateState(0); // Initializes page
 
 //console.log(pages[state][0]);
