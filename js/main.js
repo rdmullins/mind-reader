@@ -1,7 +1,7 @@
 // Mind Reader
 // Roger Mullins
 
-let class = 0;
+let state = 0;
 let pages = [
     [
         "I can read your mind",
@@ -40,3 +40,15 @@ let pages = [
         "Reset"
     ]
 ];
+
+let stateObj = {
+    headerText : "",
+    btn1: "",
+    helperText: "",
+    btn2: ""
+};
+
+
+
+//console.log(pages[state][0]);
+
