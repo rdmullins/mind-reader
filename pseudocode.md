@@ -45,9 +45,12 @@ To complete the assignment, you must complete the following:
 ### Event Listeners
 - buttonOne
     - Always going to progress state forward
+    - Increments state
+    - Calls updateDisplay()
 - buttonTwo
     - Moves state forward if state=0 (beginning of project)
     - Otherwise resets state to 0 (call function initialize())
+    - Calls updateDisplay()
 
 ### Functions
 - initialize()
@@ -59,4 +62,44 @@ To complete the assignment, you must complete the following:
     - Assigns the same symbol to all multiples of 9
     - Assigns random symbols to all other numbers
     - Essentially provides card title element for state 4
+
+---
+### HTML Definition
+(Bootstrap Card Element)
+
+- CARD TITLE
+- BUTTON
+- SECONDARY TEXT
+- BOTTOM BUTTON
+---
+
+
+### Initialize Page
+1. BEGIN
+1. SET state = 0
+1. CALL initialize(state) function WITH state as parameter
+    1. BEGIN
+    1. ACCESS pageObj
+    1. RETRIEVE values for given state
+    1. UPDATE stateObj with retrieved values
+        1. **If possible figure out how to make this immutable with spread op**
+    1. END
+1. CALL updateDisplay()
+    1. BEGIN
+    1. ACCESS stateObj
+    1. POPULATE page elements with values
+    1. END
+1. END
+
+Page is now in state 0, awaiting user action.
+
+### buttonTwo Event Listener = click
+1. BEGIN
+1. IF state=0
+    1. INCREMENT state
+    1. UPDATE stateObj
+    1. CALL updateDisplay()
+1. IF state > 0
+    1. CALL initalize(0)
+
 
