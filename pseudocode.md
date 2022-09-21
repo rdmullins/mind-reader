@@ -34,10 +34,10 @@ To complete the assignment, you must complete the following:
 
 ### Global Variables
 - state (int)
+- pages[]
+    - Holds all 6 possible states (0-5)
 
 ### Objects
-- pagesObj
-    - Holds all 6 possible states (0-5)
 - stateObj
     - Holds current state
     - Used to populate DOM
@@ -55,6 +55,9 @@ To complete the assignment, you must complete the following:
 ### Functions
 - initialize()
     - Sets page to state 0
+- updateState()
+    - Increment or Decrement state
+    - Set values = current state values from pagesObj
 - updateDisplay()
     - Actually changes DOM based on state
 - symbols()
@@ -93,6 +96,13 @@ To complete the assignment, you must complete the following:
 
 Page is now in state 0, awaiting user action.
 
+### buttonOne Event Listener = click
+1. BEGIN
+1. INCREMENT state
+1. UPDATE stateObj
+1. CALL updateDisplay()
+1. END
+
 ### buttonTwo Event Listener = click
 1. BEGIN
 1. IF state=0
@@ -101,5 +111,21 @@ Page is now in state 0, awaiting user action.
     1. CALL updateDisplay()
 1. IF state > 0
     1. CALL initalize(0)
+1. END
+
+### updateState() Definition
+1. BEGIN
+1. ACCESS pages[state]
+1. STEP through array, populating values to each key
+1. END
+
+### updateDisplay() Definition
+1. BEGIN
+1. ACCESS stateObj
+1. GET values for each DOM element
+1. SET display = values
+1. END
+
+
 
 
