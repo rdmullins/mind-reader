@@ -48,7 +48,34 @@ let stateObj = {
     btn2: ""
 };
 
+function updateState(currentState) {
+    stateObj.headerText = pages[currentState][0];
+    stateObj.btn1 = pages[currentState][1];
+    stateObj.helperText = pages[currentState][2];
+    stateObj.btn2 = pages[currentState][3];
+    updateDisplay();
+};
 
+function updateDisplay() {
+
+    let headerText = document.getElementById('headerText');
+    headerText.innerText = stateObj.headerText;
+
+    let btn1 = document.getElementById('btn1');
+    btn1.innerText = stateObj.btn1;
+
+    let helperText = document.getElementById('helperText');
+    helperText.innerText = stateObj.helperText;
+
+    let btn2 = document.getElementById('btn2');
+    btn2.innerText = stateObj.btn2;
+
+};
 
 //console.log(pages[state][0]);
+
+for (let i=0; i<=5; i++) {
+    updateState(i);
+    console.log(stateObj);
+};
 
