@@ -94,7 +94,11 @@ function updateState(buttonID) {
 function updateDisplay() {
 
     let headerText = document.getElementById('headerText');
-    headerText.innerText = stateObj.headerText;
+    if ((state == 4) || (state == 5)) {
+        headerText.innerHTML = stateObj.headerText;
+    } else {
+        headerText.innerText = stateObj.headerText;
+    };
 
     let btn1 = document.getElementById('btn1');
     btn1.innerText = stateObj.btn1;
@@ -103,8 +107,11 @@ function updateDisplay() {
 //    };
 
     let helperText = document.getElementById('helperText');
-    helperText.innerText = stateObj.helperText;
-
+    if (state == 5) {
+        helperText.innerHTML = stateObj.helperText;
+    } else {
+        helperText.innerText = stateObj.helperText;
+    };
     let btn2 = document.getElementById('btn2');
     btn2.innerText = stateObj.btn2;
 //    if (state==0) {
@@ -267,9 +274,14 @@ function setNumberSymbolList () {
     newDiv = newDiv + newLine;
     console.log(newDiv);
     iconTest.innerHTML=newDiv;
+
+    pages[4][0] = newDiv;
+    pages[5][0] = fauxShuffledArray[startPoint];
+    pages[5][2] = ("Your symbol is " + fauxShuffledArray[startPoint]);
 };
 
 updateState(0); // Initializes page
+setNumberSymbolList(); // Shuffles and sets list
 
 
 // for (let i=0; i<=5; i++) {
