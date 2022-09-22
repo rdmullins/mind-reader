@@ -162,29 +162,31 @@ function setNumberSymbolList () {
     // Faux Shuffle
 
     let startPoint = (Math.floor(Math.random()*symbols.length));
-    console.log("Start Point for Traversing Array: " + startPoint);
-    console.log("Nines Symbol: " + symbols[startPoint]);
-    console.log("Others:");
+    // console.log("Start Point for Traversing Array: " + startPoint);
+    // console.log("Nines Symbol: " + symbols[startPoint]);
+    // console.log("Others:");
     
     let topHalf = symbols.slice(startPoint+1);
-    let bottomHalf = [];
-    for (let i=0; i<startPoint; i++) {
-        bottomHalf = bottomHalf + symbols[i];
-    };
-    let fauxShuffledArray = bottomHalf + topHalf;
-    for (let i=0; i<=fauxShuffledArray.length; i++) {
-        console.log(i + " : " + fauxShuffledArray[i]);
-    }
+    let bottomHalf = symbols.slice(0, startPoint);
+    let fauxShuffledArray = topHalf.concat(bottomHalf);
+    // console.log("Start point: " + startPoint);
+    // console.log(topHalf);
+    // console.log(bottomHalf);
+    // console.log(fauxShuffledArray);
+
+    // for (let i=0; i<=fauxShuffledArray.length; i++) {
+    //     //console.log(i + " : " + fauxShuffledArray[i]);
+    // }
 
 
     let iconTest = document.getElementById("testBoxForIcons");
     let newDiv = "";
     let newLine = "";
 
-    for (let i=0; i<=30; i++) {
-        newLine = (newLine + "<p>" + i + " : " + symbols[i]);
+    for (let i=0; i<fauxShuffledArray.length; i++) {
+        newLine = (newLine + "<p>" + i + " : " + fauxShuffledArray[i]);
         //iconTest.innerHTML(newLine);
-        console.log(newLine);
+        //console.log(newLine);
     };
     newDiv = newDiv + newLine;
     console.log(newDiv);
