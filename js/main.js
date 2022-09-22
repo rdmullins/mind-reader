@@ -48,7 +48,24 @@ let stateObj = {
     btn2: ""
 };
 
-function updateState(currentState) {
+// updateState is called by either of the two buttons on the page.
+// The parameter identifies WHICH button was clicked, 1 or 2.
+function updateState(buttonID) {
+
+    switch (buttonID) {
+        case 1: 
+            state = state + 1;
+            break;
+        case 2:
+            if (state = 0) {
+                state = state + 1;
+            } else {
+                state = state - 1;
+            };
+    }; // End Switch Case
+
+    console.log(state);
+
     stateObj.headerText = pages[currentState][0];
     stateObj.btn1 = pages[currentState][1];
     stateObj.helperText = pages[currentState][2];
