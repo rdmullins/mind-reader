@@ -52,24 +52,34 @@ let stateObj = {
 // The parameter identifies WHICH button was clicked, 1 or 2.
 function updateState(buttonID) {
 
-    switch (buttonID) {
-        case 1: 
+    if (buttonID = 1) {
+        state = state + 1;
+    } else {
+        if (state = 0) {
             state = state + 1;
-            break;
-        case 2:
-            if (state = 0) {
-                state = state + 1;
-            } else {
-                state = state - 1;
-            };
-    }; // End Switch Case
+        } else {
+            state = 0;
+        };
+    };
+
+//    switch (buttonID) {
+//        case 1: 
+//            state = state + 1;
+//            break;
+//        case 2:
+//            if (state = 0) {
+//                state = state + 1;
+//            } else {
+//                state = 0;
+//            };
+//    }; // End Switch Case
 
     console.log(state);
 
-    stateObj.headerText = pages[currentState][0];
-    stateObj.btn1 = pages[currentState][1];
-    stateObj.helperText = pages[currentState][2];
-    stateObj.btn2 = pages[currentState][3];
+    stateObj.headerText = pages[state][0];
+    stateObj.btn1 = pages[state][1];
+    stateObj.helperText = pages[state][2];
+    stateObj.btn2 = pages[state][3];
     updateDisplay();
 };
 
