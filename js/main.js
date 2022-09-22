@@ -119,11 +119,13 @@ function setNumberSymbolList () {
         '<i class="bi bi-smartwatch"></i></p>',
         '<i class="bi bi-snow2"></i></p>',
         '<i class="bi bi-suit-club-fill"></i></p>',
+        '<i class="bi bi-fuel-pump-diesel-fill"></i></p>',
         '<i class="bi bi-thermometer-half"></i></p>',
         '<i class="bi bi-trash3-fill"></i></p>',
         '<i class="bi bi-alarm-fill"></i></p>',
         '<i class="bi bi-arrow-left-circle-fill"></i></p>',
         '<i class="bi bi-balloon-heart"></i></p>',
+        '<i class="bi bi-flower2"></i></p>',
         '<i class="bi bi-bank"></i></p>',
         '<i class="bi bi-battery-charging"></i></p>',
         '<i class="bi bi-boxes"></i></p>',
@@ -131,6 +133,8 @@ function setNumberSymbolList () {
         '<i class="bi bi-bug-fill"></i></p>',
         '<i class="bi bi-camera"></i></p>',
         '<i class="bi bi-camera-reels-fill"></i></p>',
+        '<i class="bi bi-yin-yang"></i></p>',
+        '<i class="bi bi-flag-fill"></i></p>',
         '<i class="bi bi-card-image"></i></p>',
         '<i class="bi bi-cart"></i></p>',
         '<i class="bi bi-chat"></i></p>',
@@ -146,7 +150,73 @@ function setNumberSymbolList () {
         '<i class="bi bi-dribbble"></i></p>',
         '<i class="bi bi-droplet-half"></i></p>',
         '<i class="bi bi-emoji-sunglasses"></i></p>',
-        '<i class="bi bi-eyeglasses"></i></p>'
+        '<i class="bi bi-eyeglasses"></i></p>',
+        '<i class="bi bi-file-earmark-music"></i></p>',
+        '<i class="bi bi-wrench-adjustable"></i></p>',
+        '<i class="bi bi-file-text-fill"></i></p>',
+        '<i class="bi bi-tags-fill"></i></p>',
+        '<i class="bi bi-file-zip-fill"></i></p>',
+        '<i class="bi bi-film"></i></p>',
+        '<i class="bi bi-filter-circle"></i></p>',
+        '<i class="bi bi-fingerprint"></i></p>',
+        '<i class="bi bi-stoplights-fill"></i></p>',
+        '<i class="bi bi-fire"></i></p>',
+        '<i class="bi bi-flag"></i></p>',
+        '<i class="bi bi-flower1"></i></p>',
+        '<i class="bi bi-folder"></i></p>',
+        '<i class="bi bi-fuel-pump"></i></p>',
+        '<i class="bi bi-funnel"></i></p>',
+        '<i class="bi bi-gear"></i></p>',
+        '<i class="bi bi-geo-alt-fill"></i></p>',
+        '<i class="bi bi-thermometer-snow"></i></p>',
+        '<i class="bi bi-gift-fill"></i></p>',
+        '<i class="bi bi-globe2"></i></p>',
+        '<i class="bi bi-graph-down"></i></p>',
+        '<i class="bi bi-sunset"></i></p>',
+        '<i class="bi bi-graph-up-arrow"></i></p>',
+        '<i class="bi bi-hammer"></i></p>',
+        '<i class="bi bi-hand-index-thumb"></i></p>',
+        '<i class="bi bi-handbag-fill"></i></p>',
+        '<i class="bi bi-star-fill"></i></p>',
+        '<i class="bi bi-headphones"></i></p>',
+        '<i class="bi bi-heart-arrow"></i></p>',
+        '<i class="bi bi-hourglass"></i></p>',
+        '<i class="bi bi-house-heart-fill"></i></p>',
+        '<i class="bi bi-journal-bookmark-fill"></i></p>',
+        '<i class="bi bi-usb-symbol"></i></p>',
+        '<i class="bi bi-joystick"></i></p>',
+        '<i class="bi bi-key"></i></p>',
+        '<i class="bi bi-keyboard-fill"></i></p>',
+        '<i class="bi bi-stoplights"></i></p>',
+        '<i class="bi bi-lamp"></i></p>',
+        '<i class="bi bi-life-preserver"></i></p>',
+        '<i class="bi bi-lightbulb-fill"></i></p>',
+        '<i class="bi bi-magic"></i></p>',
+        '<i class="bi bi-megaphone"></i></p>',
+        '<i class="bi bi-magnet"></i></p>',
+        '<i class="bi bi-mic-fill"></i></p>',
+        '<i class="bi bi-moon-stars-fill"></i></p>',
+        '<i class="bi bi-mortarboard-fill"></i></p>',
+        '<i class="bi bi-newspaper"></i></p>',
+        '<i class="bi bi-palette"></i></p>',
+        '<i class="bi bi-peace"></i></p>',
+        '<i class="bi bi-triangle-half"></i></p>',
+        '<i class="bi bi-piggy-bank"></i></p>',
+        '<i class="bi bi-plug-fill"></i></p>',
+        '<i class="bi bi-puzzle-fill"></i></p>',
+        '<i class="bi bi-rss-fill"></i></p>',
+        '<i class="bi bi-scissors"></i></p>',
+        '<i class="bi bi-screwdriver"></i></p>',
+        '<i class="bi bi-send"></i></p>',
+        '<i class="bi bi-sign-stop-fill"></i></p>',
+        '<i class="bi bi-suit-spade"></i></p>',
+        '<i class="bi bi-tornado"></i></p>',
+        '<i class="bi bi-trophy"></i></p>',
+        '<i class="bi bi-tree"></i></p>',
+        '<i class="bi bi-truck"></i></p>',
+        '<i class="bi bi-umbrella"></i></p>',
+        '<i class="bi bi-vector-pen"></i></p>',
+        '<i class="bi bi-wrench"></i></p>'
     ];
 
     // let shuffled = [];
@@ -182,22 +252,25 @@ function setNumberSymbolList () {
     let iconTest = document.getElementById("testBoxForIcons");
     let newDiv = "";
     let newLine = "";
-
+    
     for (let i=0; i<fauxShuffledArray.length; i++) {
-        newLine = (newLine + "<p>" + i + " : " + fauxShuffledArray[i]);
+
+        if (i%9==0) {
+            newLine = (newLine + "<p>" + i + " : " + fauxShuffledArray[startPoint]);
+        } else {
+            newLine = (newLine + "<p>" + i + " : " + fauxShuffledArray[i]);
+        };
         //iconTest.innerHTML(newLine);
         //console.log(newLine);
     };
+
     newDiv = newDiv + newLine;
     console.log(newDiv);
     iconTest.innerHTML=newDiv;
 };
 
-// Need to move incrementer?
-
 updateState(0); // Initializes page
 
-//console.log(pages[state][0]);
 
 // for (let i=0; i<=5; i++) {
 //     updateState(i);
