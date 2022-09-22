@@ -90,18 +90,18 @@ function updateDisplay() {
 
     let btn1 = document.getElementById('btn1');
     btn1.innerText = stateObj.btn1;
-    if (state > 0) {
-        btn1.addEventListener("click", function() { updateState(state+1)});
-    };
+//    if (state > 0) {
+//        btn1.addEventListener("click", function() { updateState(state+1)});
+//    };
 
     let helperText = document.getElementById('helperText');
     helperText.innerText = stateObj.helperText;
 
     let btn2 = document.getElementById('btn2');
     btn2.innerText = stateObj.btn2;
-    if (state==0) {
-        btn2.addEventListener("click", function() { updateState(1)});
-    };
+//    if (state==0) {
+//        btn2.addEventListener("click", function() { updateState(1)});
+//    };
 
 };
 
