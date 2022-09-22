@@ -59,29 +59,35 @@ To complete the assignment, you must complete the following:
     - Calls updateDisplay()
 - updateDisplay()
     - Actually changes DOM based on state
-- symbols()
+- setNumberSymbolList()
     - Holds array of available symbols
     - Assigns the same symbol to all multiples of 9
-    - Assigns random symbols to all other numbers
-    - Essentially provides card title element for state 4
+    - Performs a pseudo-shuffle of the remaining symbols
+        - Uses 9 symbol as the break point
+        - SLICEs top portion of array (the remaining elements after the random 9 symbol)
+        - SLICEs bottom portion up to the random 9 symbol
+        - CONCATENATEs bottom onto top
+    - Steps through the resulting array to assign symbols to all other numbers
+    - Builds a DOM element with the list of numbers and symbols
+    - Updates pages array with dynamically-created content for states 4 and 5 (pages 5 and 6)
 
 ---
 ### HTML Definition
-(Bootstrap Card Element)
-
-- CARD TITLE
-- BUTTON
-- SECONDARY TEXT
-- BOTTOM BUTTON
+(IDs)
+- headerText
+- button1
+- helperText
+- button2
 ---
 
 
 ### Initialize Page
+This happens on page load by calling updateState with a parameter of 0
 1. BEGIN
 1. SET state = 0
-1. CALL initialize(state) function WITH state as parameter
+1. CALL updateState() function WITH state as parameter
     1. BEGIN
-    1. ACCESS pageObj
+    1. ACCESS page array
     1. RETRIEVE values for given state
     1. UPDATE stateObj with retrieved values
         1. **If possible figure out how to make this immutable with spread op**
@@ -95,7 +101,7 @@ To complete the assignment, you must complete the following:
 
 Page is now in state 0, awaiting user action.
 
-### buttonOne Event Listener = click
+### btn1 Event Listener = click
 1. BEGIN
 1. INCREMENT state
 1. UPDATE stateObj
@@ -104,12 +110,18 @@ Page is now in state 0, awaiting user action.
 
 ### buttonTwo Event Listener = click
 1. BEGIN
-1. IF state=0
+1. IF state = 0
+    1. BEGIN
     1. INCREMENT state
     1. UPDATE stateObj
     1. CALL updateDisplay()
+    1. END
 1. IF state > 0
-    1. CALL initalize(0)
+    1. BEGIN
+    1. SET state = 0
+    1. RESET stateObj
+    1. CALL updateDisplay
+    1. END
 1. END
 
 ### updateState() Definition
@@ -122,7 +134,7 @@ Page is now in state 0, awaiting user action.
 1. BEGIN
 1. ACCESS stateObj
 1. GET values for each DOM element
-1. SET display = values
+1. SET DOM IDs = values
 1. END
 
 

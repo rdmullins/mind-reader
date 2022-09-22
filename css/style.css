@@ -1,6 +1,11 @@
 .symbol-box {
     max-height: 40vh;
+    text-align: center;
     overflow-y: auto;
+}
+
+.helper-text {
+    text-align: center;
 }
 
 .symbol-reveal {
