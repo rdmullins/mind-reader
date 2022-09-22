@@ -1,0 +1,47 @@
+.symbol-box {
+    max-height: 40vh;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.helper-text {
+    text-align: center;
+}
+
+.symbol-reveal {
+    font-size: 4rem;
+}
+
+.round-button {
+    /* width: 20vw;
+    height: 20vh; */
+    position: absolute bottom right;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: red;
+    height: 50px;
+}
+
+.purple {
+    background-color: purple;
+    height: 50px;
+}
+
+.yellow {
+    background-color: yellow;
+    height: 50px;
+}
+
+.pink {
+    background-color: pink;
+    height: 50px;
+}
+
+.bottom-button {
+    width: auto;
+    position: relative;
+    border-radius: 50%;
+    right: 0;
+}
