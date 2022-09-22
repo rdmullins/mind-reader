@@ -149,11 +149,39 @@ function setNumberSymbolList () {
         '<i class="bi bi-eyeglasses"></i></p>'
     ];
 
+    // let shuffled = [];
+
+    // Shuffle
+    // Modified Fisher-Yates (Knuth) algorithm
+
+    // for (let i=0; i<=symbols.length; i++) {
+    //     let randElement = (Math.floor(Math.random()*symbols.length));
+
+    // }
+
+    // Faux Shuffle
+
+    let startPoint = (Math.floor(Math.random()*symbols.length));
+    console.log("Start Point for Traversing Array: " + startPoint);
+    console.log("Nines Symbol: " + symbols[startPoint]);
+    console.log("Others:");
+    
+    let topHalf = symbols.slice(startPoint+1);
+    let bottomHalf = [];
+    for (let i=0; i<startPoint; i++) {
+        bottomHalf = bottomHalf + symbols[i];
+    };
+    let fauxShuffledArray = bottomHalf + topHalf;
+    for (let i=0; i<=fauxShuffledArray.length; i++) {
+        console.log(i + " : " + fauxShuffledArray[i]);
+    }
+
+
     let iconTest = document.getElementById("testBoxForIcons");
     let newDiv = "";
     let newLine = "";
 
-    for (let i=0; i<=4; i++) {
+    for (let i=0; i<=30; i++) {
         newLine = (newLine + "<p>" + i + " : " + symbols[i]);
         //iconTest.innerHTML(newLine);
         console.log(newLine);
