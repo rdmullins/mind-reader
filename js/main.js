@@ -54,13 +54,16 @@ function updateState(buttonID) {
 
     if (buttonID = 1) {
         state = state + 1;
-    } else {
+    };
+
+    if (buttonID = 2) {
         if (state = 0) {
             state = state + 1;
         } else {
             state = 0;
         };
     };
+
 
 //    switch (buttonID) {
 //        case 1: 
