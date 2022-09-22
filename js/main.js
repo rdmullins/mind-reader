@@ -28,15 +28,15 @@ let pages = [
         "Reset"
     ],
     [
-        "LIST OF NUMBERS AND SYMBOLS",
+        "LIST OF NUMBERS AND SYMBOLS (This gets dynamically replaced)",
         "Reveal",
         "Find your new number \n Note the symbol beside the new number",
         "Reset"
     ],
     [
-        "NINE SYMBOL",
+        "NINE SYMBOL (This gets dynamically replaced)",
         "",
-        "Your symbol is: \n NINE SYMBOL",
+        "Your symbol is: \n NINE SYMBOL (This gets dynamically replaced)",
         "Reset"
     ]
 ];
@@ -272,8 +272,8 @@ function setNumberSymbolList () {
     };
 
     newDiv = newDiv + newLine;
-    console.log(newDiv);
-    iconTest.innerHTML=newDiv;
+    // console.log(newDiv);
+    // iconTest.innerHTML=newDiv;
 
     pages[4][0] = newDiv;
     pages[5][0] = fauxShuffledArray[startPoint];
