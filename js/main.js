@@ -51,19 +51,24 @@ let stateObj = {
 // updateState is called by either of the two buttons on the page.
 // The parameter identifies WHICH button was clicked, 1 or 2.
 function updateState(buttonID) {
+    console.log("Current State: " + state);
+    console.log("Button ID: " + buttonID);
 
-    if (buttonID = 1) {
+    if (buttonID == 0) {          // First time through - initialize
+        state = 0;
+    }
+
+    if (buttonID == 1) {          // Top Button - Always moves state forward
         state = state + 1;
     };
 
-    if (buttonID = 2) {
-        if (state = 0) {
+    if (buttonID == 2) {          // Bottom Button - On first screen, move forward; otherwise, reset to 0
+        if (state == 0) {
             state = state + 1;
         } else {
             state = 0;
         };
     };
-
 
 //    switch (buttonID) {
 //        case 1: 
@@ -77,7 +82,7 @@ function updateState(buttonID) {
 //            };
 //    }; // End Switch Case
 
-    console.log(state);
+    console.log("State after update: " + state);
 
     stateObj.headerText = pages[state][0];
     stateObj.btn1 = pages[state][1];
@@ -106,6 +111,56 @@ function updateDisplay() {
 //        btn2.addEventListener("click", function() { updateState(1)});
 //    };
 
+};
+
+function setNumberSymbolList () {
+
+    let symbols = [
+        '<i class="bi bi-smartwatch"></i></p>',
+        '<i class="bi bi-snow2"></i></p>',
+        '<i class="bi bi-suit-club-fill"></i></p>',
+        '<i class="bi bi-thermometer-half"></i></p>',
+        '<i class="bi bi-trash3-fill"></i></p>',
+        '<i class="bi bi-alarm-fill"></i></p>',
+        '<i class="bi bi-arrow-left-circle-fill"></i></p>',
+        '<i class="bi bi-balloon-heart"></i></p>',
+        '<i class="bi bi-bank"></i></p>',
+        '<i class="bi bi-battery-charging"></i></p>',
+        '<i class="bi bi-boxes"></i></p>',
+        '<i class="bi bi-broadcast"></i></p>',
+        '<i class="bi bi-bug-fill"></i></p>',
+        '<i class="bi bi-camera"></i></p>',
+        '<i class="bi bi-camera-reels-fill"></i></p>',
+        '<i class="bi bi-card-image"></i></p>',
+        '<i class="bi bi-cart"></i></p>',
+        '<i class="bi bi-chat"></i></p>',
+        '<i class="bi bi-chat-text-fill"></i></p>',
+        '<i class="bi bi-clipboard-pulse"></i></p>',
+        '<i class="bi bi-cloud-drizzle"></i></p>',
+        '<i class="bi bi-cloud-haze2"></i></p>',
+        '<i class="bi bi-cloud-sun"></i></p>',
+        '<i class="bi bi-cone-striped"></i></p>',
+        '<i class="bi bi-cup-hot-fill"></i></p>',
+        '<i class="bi bi-controller"></i></p>',
+        '<i class="bi bi-dice-5"></i></p>',
+        '<i class="bi bi-dribbble"></i></p>',
+        '<i class="bi bi-droplet-half"></i></p>',
+        '<i class="bi bi-emoji-sunglasses"></i></p>',
+        '<i class="bi bi-eyeglasses"></i></p>'
+    ];
+
+    let iconTest = document.getElementById("testBoxForIcons");
+    let newDiv = "";
+    let newLine = "";
+
+    for (let i=0; i<=4; i++) {
+        newLine = (newLine + "<p>" + i + " : " + symbols[i]);
+        //iconTest.innerHTML(newLine);
+        console.log(newLine);
+    };
+    newDiv = newDiv + newLine;
+    console.log(newDiv);
+    iconTest.innerHTML=newDiv;
 };
 
 // Need to move incrementer?
