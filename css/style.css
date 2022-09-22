@@ -1,0 +1,13 @@
+.symbol-box {
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+.symbol-reveal {
+    font-size: 4rem;
+}
+
+.round-button {
+    width: 20vw;
+    border-radius: 100%;
+}

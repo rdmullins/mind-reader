@@ -67,6 +67,7 @@ function updateState(buttonID) {
             state = state + 1;
         } else {
             state = 0;
+            setNumberSymbolList();
         };
     };
 
@@ -100,7 +101,18 @@ function updateDisplay() {
         headerText.innerText = stateObj.headerText;
     };
 
+    if (state == 5) {
+        headerText.classList.add('symbol-reveal');
+    }
+
     let btn1 = document.getElementById('btn1');
+    if (state == 0) {
+        btn1.classList.add("d-none");
+    };
+
+    if (state !== 0) {
+        btn1.classList.remove("d-none");
+    };
     btn1.innerText = stateObj.btn1;
 //    if (state > 0) {
 //        btn1.addEventListener("click", function() { updateState(state+1)});
@@ -112,7 +124,9 @@ function updateDisplay() {
     } else {
         helperText.innerText = stateObj.helperText;
     };
+
     let btn2 = document.getElementById('btn2');
+    
     btn2.innerText = stateObj.btn2;
 //    if (state==0) {
 //        btn2.addEventListener("click", function() { updateState(1)});
