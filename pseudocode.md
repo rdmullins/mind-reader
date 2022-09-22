@@ -53,11 +53,10 @@ To complete the assignment, you must complete the following:
     - Calls updateDisplay()
 
 ### Functions
-- initialize()
-    - Sets page to state 0
 - updateState()
     - Increment or Decrement state
-    - Set values = current state values from pagesObj
+    - Set values -> reads through pages array to get current values based on updated state
+    - Calls updateDisplay()
 - updateDisplay()
     - Actually changes DOM based on state
 - symbols()

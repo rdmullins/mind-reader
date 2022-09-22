@@ -48,11 +48,11 @@ let stateObj = {
     btn2: ""
 };
 
-// updateState is called by either of the two buttons on the page.
-// The parameter identifies WHICH button was clicked, 1 or 2.
 function updateState(buttonID) {
-    console.log("Current State: " + state);
-    console.log("Button ID: " + buttonID);
+    // updateState is called by either of the two buttons on the page.
+    // The parameter identifies WHICH button was clicked, 1 or 2 (or 0, for page load)
+    // console.log("Current State: " + state);
+    // console.log("Button ID: " + buttonID);
 
     if (buttonID == 0) {          // First time through - initialize
         state = 0;
@@ -71,55 +71,40 @@ function updateState(buttonID) {
         };
     };
 
-//    switch (buttonID) {
-//        case 1: 
-//            state = state + 1;
-//            break;
-//        case 2:
-//            if (state = 0) {
-//                state = state + 1;
-//            } else {
-//                state = 0;
-//            };
-//    }; // End Switch Case
-
-    console.log("State after update: " + state);
+    // console.log("State after update: " + state);
 
     stateObj.headerText = pages[state][0];
     stateObj.btn1 = pages[state][1];
     stateObj.helperText = pages[state][2];
     stateObj.btn2 = pages[state][3];
     updateDisplay();
-};
+}; // End updateState()
 
 function updateDisplay() {
 
     let headerText = document.getElementById('headerText');
-    if ((state == 4) || (state == 5)) {
-        headerText.innerHTML = stateObj.headerText;
-    } else {
-        headerText.innerText = stateObj.headerText;
+    if ((state == 4) || (state == 5)) {                         // innerText vs innerHTML
+        headerText.innerHTML = stateObj.headerText;             // For dynamically-generated content
+    } else {                                                    // in states 4 and 5, innerHTML is used
+        headerText.innerText = stateObj.headerText;             // For static text, innerText works
     };
 
     if (state == 5) {
-        headerText.classList.add('symbol-reveal');
+        headerText.classList.add('symbol-reveal');              // Increases final font size
     }
 
     let btn1 = document.getElementById('btn1');
-    if (state == 0) {
+    if (state == 0) {                                           // Hides first button if state = 0
         btn1.classList.add("d-none");
     };
 
-    if (state !== 0) {
+    if (state !== 0) {                                          // Reveals first button otherwise
         btn1.classList.remove("d-none");
     };
     btn1.innerText = stateObj.btn1;
-//    if (state > 0) {
-//        btn1.addEventListener("click", function() { updateState(state+1)});
-//    };
 
-    let helperText = document.getElementById('helperText');
-    if (state == 5) {
+    let helperText = document.getElementById('helperText');     // innerText vs HTML
+    if (state == 5) {                                           // See description above
         helperText.innerHTML = stateObj.helperText;
     } else {
         helperText.innerText = stateObj.helperText;
@@ -128,13 +113,14 @@ function updateDisplay() {
     let btn2 = document.getElementById('btn2');
     
     btn2.innerText = stateObj.btn2;
-//    if (state==0) {
-//        btn2.addEventListener("click", function() { updateState(1)});
-//    };
 
-};
+}; // End updateDisplay()
 
 function setNumberSymbolList () {
+// Defines an array of 100 icons
+// Performs a faux shuffle
+// Builds a DOM element with content for states 4 and 5
+// Inserts dynamic element back into pages array for use by updateDisplay()
 
     let symbols = [
         '<i class="bi bi-smartwatch"></i></p>',
@@ -240,66 +226,33 @@ function setNumberSymbolList () {
         '<i class="bi bi-wrench"></i></p>'
     ];
 
-    // let shuffled = [];
-
-    // Shuffle
-    // Modified Fisher-Yates (Knuth) algorithm
-
-    // for (let i=0; i<=symbols.length; i++) {
-    //     let randElement = (Math.floor(Math.random()*symbols.length));
-
-    // }
-
     // Faux Shuffle
+    // Takes the symbols array, removes a random element to use for the nines symbol, puts together new array
 
-    let startPoint = (Math.floor(Math.random()*symbols.length));
-    // console.log("Start Point for Traversing Array: " + startPoint);
-    // console.log("Nines Symbol: " + symbols[startPoint]);
-    // console.log("Others:");
-    
-    let topHalf = symbols.slice(startPoint+1);
-    let bottomHalf = symbols.slice(0, startPoint);
-    let fauxShuffledArray = topHalf.concat(bottomHalf);
-    // console.log("Start point: " + startPoint);
-    // console.log(topHalf);
-    // console.log(bottomHalf);
-    // console.log(fauxShuffledArray);
+    let startPoint = (Math.floor(Math.random()*symbols.length));        // Determine random array element start index (also nines symbol)
 
-    // for (let i=0; i<=fauxShuffledArray.length; i++) {
-    //     //console.log(i + " : " + fauxShuffledArray[i]);
-    // }
+    let topHalf = symbols.slice(startPoint+1);                          // Slice top half of array (portion beyond startPoint)
+    let bottomHalf = symbols.slice(0, startPoint);                      // Slice bottom half of array (portion up to startPoint)
+    let fauxShuffledArray = topHalf.concat(bottomHalf);                 // Concatenates two portions, flipped from their original spot
 
-
-    let iconTest = document.getElementById("testBoxForIcons");
     let newDiv = "";
-    let newLine = "";
     
     for (let i=0; i<fauxShuffledArray.length; i++) {
 
         if (i%9==0) {
-            newLine = (newLine + "<p>" + i + " : " + fauxShuffledArray[startPoint]);
+            newDiv = (newDiv + "<p>" + i + " : " + fauxShuffledArray[startPoint]);
         } else {
-            newLine = (newLine + "<p>" + i + " : " + fauxShuffledArray[i]);
+            newDiv = (newDiv + "<p>" + i + " : " + fauxShuffledArray[i]);
         };
-        //iconTest.innerHTML(newLine);
-        //console.log(newLine);
+
     };
 
-    newDiv = newDiv + newLine;
-    // console.log(newDiv);
-    // iconTest.innerHTML=newDiv;
+    // Insert the dynamically generated content into the pages array
 
     pages[4][0] = newDiv;
     pages[5][0] = fauxShuffledArray[startPoint];
     pages[5][2] = ("Your symbol is " + fauxShuffledArray[startPoint]);
-};
+}; // End setNumberSymbolList()
 
 updateState(0); // Initializes page
 setNumberSymbolList(); // Shuffles and sets list
-
-
-// for (let i=0; i<=5; i++) {
-//     updateState(i);
-//     console.log(stateObj);
-// };
-
