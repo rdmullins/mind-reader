@@ -91,14 +91,18 @@ function updateDisplay() {
 
     if (state == 5) {
         headerText.classList.add('symbol-reveal');              // Increases final font size
-    }
+    };
+
+    if (state !== 5) {
+        headerText.classList.remove('symbol-reveal');           // Resets font size for states other than 5
+    };
 
     let btn1 = document.getElementById('btn1');
-    if (state == 0) {                                           // Hides first button if state = 0
+    if ((state == 0) || (state == 5)) {                         // Hides first button if state = 0 or 5
         btn1.classList.add("d-none");
     };
 
-    if (state !== 0) {                                          // Reveals first button otherwise
+    if ((state !== 0) && (state !== 5)) {                                          // Reveals first button otherwise
         btn1.classList.remove("d-none");
     };
     btn1.innerText = stateObj.btn1;

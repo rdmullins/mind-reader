@@ -12,6 +12,10 @@
     font-size: 4rem;
 }
 
+.box-height {
+    height: 30vh;
+}
+
 .round-button {
     /* width: 20vw;
     height: 20vh; */
