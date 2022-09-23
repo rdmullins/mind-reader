@@ -125,18 +125,59 @@ Page is now in state 0, awaiting user action.
 1. END
 
 ### updateState() Definition
+Runs on page load (parameter 0) and on button clicks (see above)
+
 1. BEGIN
 1. ACCESS pages[state]
 1. STEP through array, populating values to each key
 1. END
 
 ### updateDisplay() Definition
+Runs when state changes.
 1. BEGIN
 1. ACCESS stateObj
 1. GET values for each DOM element
 1. SET DOM IDs = values
 1. END
 
+### setNumberSymbolList() Definition
+Runs on page load and in event of page reset.
 
+1. BEGIN
+1. SET array of symbols 0-99
+1. GENERATE random integer from 0-99
+1. ACCESS array element [random number]
+1. DIVIDE array
+    1. BEGIN
+    1. SET top half array = SLICEd array from [random number + 1] to end
+    1. SET bottom half arry = SLICEd array from beginning to [random number - 1]
+    1. END
+1. CONCATENATE top and bottom half arrays
+1. SET result as shuffled array
+1. CREATE variable to hold new Div content
+1. LOOP 0 - 99
+    1. BEGIN
+    1. IF iterator is a multiple of 9
+        1. BEGIN
+        1. SET symbol = shuffled array [random number]
+        1. END
+    1. ELSE
+        1. BEGIN
+        1. SET symbol equal to shuffled array [iterator]
+        1. END
+    1. BUILD string:
+        1. BEGIN
+        1. CREATE HTML paragraph element
+        1. ADD symbol path from array
+        1. CLOSE HTML paragraph element
+        1. SET new Div = new Div + string
+        1. END (return to top of loop)
+    1. END
+1. ACCESS pages array [4] (page 5 content)
+1. UPDATE page 4 array top element to equal the new Div
+1. ACCESS pages array [5] (page 6 content)
+1. UPDATE page 5 array top element to equal the symbol assigned to multiples of nine
+1. UPDATE page 5 array helper text element to reference the symbol assigned to multiples of nine
+1. END
 
 
