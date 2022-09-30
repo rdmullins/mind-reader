@@ -48,6 +48,134 @@ let stateObj = {
     btn2: ""
 };
 
+function buildUI() {
+    // Creates HTML elements
+  
+    function createElement(parentID, typeOfElement, bootstrapClasses, idString, innerText = "") {
+      let target = document.getElementById(parentID);
+      let newElement = document.createElement(typeOfElement);
+      newElement.classList.add(...bootstrapClasses);
+      newElement.setAttribute("id", idString);
+      if (innerText != "") {
+        newElement.innerText = innerText;
+      }
+      target.appendChild(newElement);
+    };
+  
+    function createNavToggle() {
+      let target = document.getElementById('nav-bar-container');
+      let newButton = document.createElement('button');
+      newButton.classList.add('navbar-toggler');
+      newButton.setAttribute('type', 'button');
+      newButton.setAttribute('data-bs-toggle', 'collapse');
+      newButton.setAttribute('data-bs-target', '#nav-menu');
+      newButton.setAttribute('id', 'hamburger');
+      target.appendChild(newButton);
+    }
+  
+    function createInputSection() {
+      let target = document.getElementById('input-div');
+      let inputBox = document.createElement('input');
+      inputBox.classList.add("form-control");
+      inputBox.setAttribute("type", "text");
+      inputBox.setAttribute("placeholder", "Enter a 5-digit ZIP code");
+      inputBox.setAttribute("id", "zip-in");
+      target.appendChild(inputBox);
+  
+      let zipButton = document.createElement('button');
+      zipButton.classList.add("btn");
+      zipButton.classList.add("btn-dark");
+      zipButton.classList.add("btn-lg");
+      zipButton.setAttribute("type", "button");
+      zipButton.setAttribute("id", "zipButton");
+      zipButton.setAttribute("onclick", "getZip()");
+      zipButton.innerText = "Submit";
+      target.appendChild(zipButton);
+    };
+  
+    function addModalTrigger(elementID, destination) {
+      let e = document.getElementById(elementID);
+      e.classList.add("btn");
+      //e.classList.add("btn-primary");
+      e.setAttribute("data-bs-toggle", "modal");
+      e.setAttribute("data-bs-target", ("#"+destination));
+    };
+  
+    function addModalCloseButton(divIn) {
+      let e = document.getElementById(divIn);
+      e.setAttribute("type", "button");
+      e.setAttribute("data-bs-dismiss", "modal");
+      e.setAttribute("aria-label", "Close");
+    };
+  
+    // Main Application Container
+    createElement("main", "div", ["container"], "appContainer");
+  
+    // Navigation Bar
+    createElement("appContainer", "nav", ['navbar', 'navbar-expand-sm', 'py-3'], "navbar");
+    createElement("navbar", "div", ["container"], "nav-bar-container");
+    createElement("nav-bar-container", "h1", ["navbar-brand", "display-5"], "navbarBrand", "Roger's Mindreader App");
+    createNavToggle();
+    createElement("hamburger", "span", ["navbar-toggler-icon"], "hamburger-icon");
+    createElement("nav-bar-container", "div", ["collapse", "navbar-collapse"], "nav-menu");
+    createElement("nav-menu", "ul", ["navbar-nav", "ms-auto"], "nav-list");
+    createElement("nav-list", "li", ["nav-item"], "nav-list-item-1");
+    createElement("nav-list-item-1", "button", ["btn", "btn-outline-dark"], "about-link", "About");
+    addModalTrigger("about-link", "aboutModal");
+    createElement("nav-list", "li", ["nav-item"], "nav-list-item-2");
+    createElement("nav-list-item-2", "button", ["btn", "btn-outline-dark"], "contact-link", "Contact");
+    addModalTrigger("contact-link", "contactModal");
+
+    // Main Page
+    // See side notes for div ids for automatic populating
+
+    createElement("main", "div", ["container-flex"], "app-container");
+    createElement("app-container", "div", ["row", "symbol-box"], "symbol-box-row");
+    createElement("symbol-box-row", "div", ["col", "align-content-center", "display-5", "box-height", "padding-top-5"], "headerText"); // headerText
+    createElement("app-container", "div", ["row", "justify-content-center"], "top-button");
+    createElement("top-button", "div", ["col", "d-flex", "justify-content-center"], "top-button-col");
+    createElement("top-button-col", "button", ["btn", "btn-primary"], "btn1");
+
+        let e = document.getElementById("btn1");
+        e.setAttribute("onclick", "updateState(1)");
+
+    createElement("main", "div", ["row", "d-flex", "justify-content-center", "align-items-center"], "helper-text-row");
+    createElement("helper-text-row", "div", ["col", "helper-text", "box-height"], "helperText"); // helperText
+    createElement("main", "div", ["row", "justify-content-center"], "middle-button-row");
+    createElement("middle-button-row", "div", ["col", "d-flex", "justify-content-center"], "middle-button-col");
+    createElement("middle-button-col", "button", ["btn", "btn-primary", "justify-content-center"], "btn2");
+
+        e = document.getElementById("btn2");
+        e.setAttribute("onclick", "updateState(2)");
+
+    // About Modal
+    createElement("appContainer", "div", ["modal", "fade"], "aboutModal");
+    createElement("aboutModal", "div", ["modal-dialog"], "aboutDialog");
+    createElement("aboutDialog", "div", ["modal-content"], "aboutContent");
+    createElement("aboutContent", "div", ["modal-header"], "aboutHeader");
+    createElement("aboutHeader", "h5", ["modal-title"], "aboutTitle", "About Roger's Mindreader App");
+    createElement("aboutHeader", "button", ["btn-close"], "aboutHeaderBtn");
+    addModalCloseButton("aboutHeaderBtn");
+    createElement("aboutContent", "div", ["modal-body"], "aboutBody", "Roger's Mindreader App\nAwesome Inc. Web Developer Bootcamp\nFall 2022\nMIT License");
+    createElement("aboutContent", "div", ["modal-footer"], "aboutFooter");
+    createElement("aboutFooter", "button", ["btn", "btn-secondary"], "aboutFooterCloseButton", "Dismiss");
+    addModalCloseButton("aboutFooterCloseButton");
+  
+    // Contact Modal
+    createElement("appContainer", "div", ["modal", "fade"], "contactModal");
+    createElement("contactModal", "div", ["modal-dialog"], "contactDialog");
+    createElement("contactDialog", "div", ["modal-content"], "contactContent");
+    createElement("contactContent", "div", ["modal-header"], "contactHeader");
+    createElement("contactHeader", "h5", ["modal-title"], "contactTitle", "Contact the Developer");
+    createElement("contactHeader", "button", ["btn-close"], "contactHeaderBtn");
+    addModalCloseButton("contactHeaderBtn");
+    createElement("contactContent", "div", ["modal-body"], "contactBody", "Roger Mullins\nrogermullins.mba@gmail.com");
+    createElement("contactContent", "div", ["modal-footer"], "contactFooter");
+    createElement("contactFooter", "button", ["btn", "btn-secondary"], "contactFooterCloseButton", "Dismiss");
+    addModalCloseButton("contactFooterCloseButton");
+  };
+
+
 function updateState(buttonID) {
     // updateState is called by either of the two buttons on the page.
     // The parameter identifies WHICH button was clicked, 1 or 2 (or 0, for page load)
@@ -258,5 +386,6 @@ function setNumberSymbolList () {
     pages[5][2] = ("Your symbol is " + fauxShuffledArray[startPoint]);
 }; // End setNumberSymbolList()
 
+buildUI();
 updateState(0); // Initializes page
 setNumberSymbolList(); // Shuffles and sets list
