@@ -2,6 +2,7 @@
     max-height: 40vh;
     text-align: center;
     overflow-y: auto;
+    align-items: center;
 }
 
 .helper-text {
