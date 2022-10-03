@@ -131,7 +131,7 @@ function buildUI() {
 
     createElement("main", "div", ["container-flex"], "app-container");
     createElement("app-container", "div", ["row", "symbol-box"], "symbol-box-row");
-    createElement("symbol-box-row", "div", ["col", "align-content-center", "display-5", "box-height", "padding-top-5"], "headerText"); // headerText
+    createElement("symbol-box-row", "div", ["col", "align-content-center", "display-5", "box-height", "padding-top-5", "symbol-box"], "headerText"); // headerText
     createElement("app-container", "div", ["row", "justify-content-center"], "top-button");
     createElement("top-button", "div", ["col", "d-flex", "justify-content-center"], "top-button-col");
     createElement("top-button-col", "button", ["btn", "btn-primary"], "btn1");
